@@ -26,6 +26,8 @@ export default class Preview extends Component<PreviewProps, PreviewState> {
 		evalInContext: PropTypes.func.isRequired,
 	};
 	public static contextType = Context;
+	// Type assertion to ensure context is properly typed
+	public context!: StyleGuideContextContents;
 
 	private mountNode: Element | null = null;
 	private reactRoot: Root | null = null;
@@ -38,7 +40,7 @@ export default class Preview extends Component<PreviewProps, PreviewState> {
 	public componentDidMount() {
 		// Clear console after hot reload, do not clear on the first load
 		// to keep any warnings
-		if ((this.context as StyleGuideContextContents).codeRevision > 0) {
+		if (this.context.codeRevision > 0) {
 			// eslint-disable-next-line no-console
 			console.clear();
 		}
@@ -70,7 +72,7 @@ export default class Preview extends Component<PreviewProps, PreviewState> {
 				self.reactRoot.unmount();
 				self.reactRoot = null;
 			}
-		});
+		}, 0);
 		self.timeoutId = id;
 	}
 
@@ -99,10 +101,13 @@ export default class Preview extends Component<PreviewProps, PreviewState> {
 				return;
 			}
 			try {
-				if (this.reactRoot === null) {
+				// Create a new root if needed
+				if (this.reactRoot === null && this.mountNode) {
 					this.reactRoot = createRoot(this.mountNode);
-					this.reactRoot.render(wrappedComponent);
-				} else {
+				}
+				
+				// Only attempt to render if we have a valid root
+				if (this.reactRoot) {
 					this.reactRoot.render(wrappedComponent);
 				}
 			} catch (err) {
@@ -124,9 +129,16 @@ export default class Preview extends Component<PreviewProps, PreviewState> {
 	};
 
 	private callbackRef = (ref: HTMLDivElement | null) => {
-		this.mountNode = ref;
-		if (!this.reactRoot && ref) {
-			this.reactRoot = createRoot(ref);
+		// If the ref changed to a different node, we need to clean up the old root
+		if (this.mountNode !== ref) {
+			if (this.reactRoot) {
+				this.reactRoot.unmount();
+				this.reactRoot = null;
+			}
+			this.mountNode = ref;
+			if (ref) {
+				this.reactRoot = createRoot(ref);
+			}
 		}
 	};
 
