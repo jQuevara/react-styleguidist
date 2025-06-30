@@ -9,6 +9,7 @@ import { VisuallyHidden } from '../components/VisuallyHidden';
 import { Row, Column } from '../components/Column';
 import { Stack } from '../components/Stack';
 import { ImageLink } from '../components/ImageLink';
+import SocialIcons from '../components/SocialIcons';
 import styles from './index.module.css';
 
 const features = [

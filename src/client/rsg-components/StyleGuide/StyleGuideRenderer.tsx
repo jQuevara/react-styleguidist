@@ -6,7 +6,6 @@ import Styled, { JssInjectedProps } from 'rsg-components/Styled';
 import cx from 'clsx';
 import Ribbon from 'rsg-components/Ribbon';
 import Version from 'rsg-components/Version';
-import SocialIcons from './SocialIcons';
 import * as Rsg from '../../../typings';
 
 const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth }: Rsg.Theme) => ({
@@ -93,11 +92,6 @@ export const StyleGuideRenderer: React.FunctionComponent<StyleGuideRendererProps
 					<div className={classes.footerContent}>
 						<Markdown text={`Created with [React Styleguidist](${homepageUrl})`} />
 					</div>
-					<SocialIcons 
-						githubUrl="https://github.com/styleguidist/react-styleguidist"
-						twitterUrl="https://twitter.com/styleguidist"
-						linkedinUrl="https://www.linkedin.com/company/styleguidist"
-					/>
 				</footer>
 			</main>
 			{hasSidebar && (
