@@ -71,6 +71,14 @@
 		border-radius: 10px;
 	}
 
+	html[data-theme='dark'] .sidebar::-webkit-scrollbar-track {
+		background: #444;
+	}
+
+	html[data-theme='dark'] .sidebar::-webkit-scrollbar-thumb {
+		background: #666;
+	}
+
 	.sidebar::-webkit-scrollbar-thumb:hover {
 		background: #555;
 	}
