@@ -1,0 +1,6 @@
+.socialIconsContainer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+  background-color: var(--ifm-footer-background-color);
+}
