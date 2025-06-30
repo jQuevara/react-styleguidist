@@ -6,6 +6,7 @@ import Styled, { JssInjectedProps } from 'rsg-components/Styled';
 import cx from 'clsx';
 import Ribbon from 'rsg-components/Ribbon';
 import Version from 'rsg-components/Version';
+import SocialIcons from './SocialIcons';
 import * as Rsg from '../../../typings';
 
 const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth }: Rsg.Theme) => ({
@@ -55,6 +56,14 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
 		color: color.light,
 		fontFamily: fontFamily.base,
 		fontSize: fontSize.small,
+		marginTop: space[4],
+		paddingTop: space[3],
+		paddingBottom: space[3],
+		borderTop: [[1, color.border, 'solid']],
+		textAlign: 'center',
+	},
+	footerContent: {
+		marginBottom: space[2],
 	},
 });
 
@@ -81,7 +90,14 @@ export const StyleGuideRenderer: React.FunctionComponent<StyleGuideRendererProps
 			<main className={classes.content}>
 				{children}
 				<footer className={classes.footer}>
-					<Markdown text={`Created with [React Styleguidist](${homepageUrl})`} />
+					<div className={classes.footerContent}>
+						<Markdown text={`Created with [React Styleguidist](${homepageUrl})`} />
+					</div>
+					<SocialIcons 
+						githubUrl="https://github.com/styleguidist/react-styleguidist"
+						twitterUrl="https://twitter.com/styleguidist"
+						linkedinUrl="https://www.linkedin.com/company/styleguidist"
+					/>
 				</footer>
 			</main>
 			{hasSidebar && (
