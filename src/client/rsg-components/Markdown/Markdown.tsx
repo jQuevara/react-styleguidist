@@ -1,6 +1,6 @@
 import React, { isValidElement, PropsWithChildren } from 'react';
 import PropTypes from 'prop-types';
-import { compiler } from 'markdown-to-jsx';
+import { Markdown as MarkdownToJsx } from 'markdown-to-jsx';
 import stripHtmlComments from 'strip-html-comments';
 import Link from 'rsg-components/Link';
 import Text from 'rsg-components/Text';
@@ -151,7 +151,7 @@ interface MarkdownProps {
 
 export const Markdown: React.FunctionComponent<MarkdownProps> = ({ text, inline }) => {
 	const overrides = inline ? inlineOverrides : baseOverrides;
-	return compiler(stripHtmlComments(text), { overrides, forceBlock: true });
+	return <MarkdownToJsx options={{ overrides, forceBlock: true }}>{stripHtmlComments(text)}</MarkdownToJsx>;
 };
 
 Markdown.propTypes = {
