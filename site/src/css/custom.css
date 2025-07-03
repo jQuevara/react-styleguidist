@@ -175,5 +175,13 @@ video {
 .footer a:hover,
 .footer a:active,
 .footer a:focus {
-	color: var(--ifm-footer-link-hover-color);
+        color: var(--ifm-footer-link-hover-color);
+}
+
+.social-icon {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        margin-right: 0.5rem;
+        vertical-align: middle;
 }
