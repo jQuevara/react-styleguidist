@@ -8,9 +8,11 @@ module.exports = {
 	projectName: 'react-styleguidist',
 	stylesheets: ['https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,400i,700'],
 	themeConfig: {
-		colorMode: {
-			disableSwitch: true,
-		},
+               colorMode: {
+                       disableSwitch: false,
+                       defaultMode: 'light',
+                       respectPrefersColorScheme: true,
+               },
 		prism: {
 			// eslint-disable-next-line import/no-extraneous-dependencies
 			theme: require('prism-react-renderer/themes/nightOwlLight'),
