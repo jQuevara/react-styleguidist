@@ -26,3 +26,7 @@ npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Dark mode
+
+Use the theme toggle in the site's navigation bar to switch between light and dark modes. The selected mode is remembered between visits.
