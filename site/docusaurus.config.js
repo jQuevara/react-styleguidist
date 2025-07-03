@@ -59,19 +59,25 @@ module.exports = {
 						},
 					],
 				},
-				{
-					title: 'Social',
-					items: [
-						{
-							label: 'GitHub',
-							href: 'https://github.com/styleguidist/react-styleguidist',
-						},
-						{
-							label: 'Twitter',
-							href: 'https://twitter.com/styleguidist',
-						},
-					],
-				},
+                                {
+                                        title: 'Social',
+                                        items: [
+                                                {
+                                                        html: `
+                                                                <a href="https://github.com/styleguidist/react-styleguidist" target="_blank" rel="noopener noreferrer">
+                                                                        <img src="/img/github.svg" alt="GitHub" class="social-icon" />
+                                                                </a>
+                                                        `,
+                                                },
+                                                {
+                                                        html: `
+                                                                <a href="https://twitter.com/styleguidist" target="_blank" rel="noopener noreferrer">
+                                                                        <img src="/img/twitter.svg" alt="Twitter" class="social-icon" />
+                                                                </a>
+                                                        `,
+                                                },
+                                        ],
+                                },
 				{
 					title: 'Sponsor',
 					items: [
